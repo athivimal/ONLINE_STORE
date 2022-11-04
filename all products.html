@@ -1,0 +1,3046 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/0d8101b1a1.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="krish ecomm.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <script src="https://kit.fontawesome.com/a8c3f708e5.js" crossorigin="anonymous"></script>
+
+  <title>E-commerece</title>
+  <style type="text/css">
+
+/* PRODUCTS */
+.product {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.product-category {
+  padding: 0 10vw;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+  font-family: Poppins,sans-serif;
+  color: #606060;
+}
+
+.product-container {
+  padding: 0 10vw;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.product-container::-webkit-scrollbar {
+  display: none;
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 450px;
+  margin-right: 40px;
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.product-thumb {
+  width: 100%;
+  height: 85%;
+  object-fit: cover;
+}
+
+.discount-tag {
+  position: absolute;
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  color: #606060;
+  right: 10px;
+  top: 10px;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.card-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  width: 90%;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  background: #fff;
+  border-radius: 5px;
+  transition: 0.5s;
+  cursor: pointer;
+  opacity: 9;
+  background:#4285F4 ;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.product-card:hover .card-btn {
+  opacity: 1;
+}
+
+.card-btn:hover {
+  background: #ff7d7d;
+  color: #fff;
+}
+
+.product-info {
+  width: 100%;
+  height: 100px;
+  padding-top: 10px;
+}
+
+.product-brand {
+  text-transform:none;
+  font-size: 14px;
+  font-family: 'Poppins',sans-serif;
+  color: #606060;
+}
+
+.product-short-description {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  opacity: 0.5;
+  text-transform: capitalize;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.price {
+  font-weight: 900;
+  font-size: 14px;
+  color: #606060;
+}
+
+.actual-price {
+  margin-left: 20px;
+  opacity: 0.5;
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #606060;
+}
+
+.pre-btn,
+.nxt-btn {
+  border: none;
+  width: 10vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+  cursor: pointer;
+  z-index: 8;
+  color: red;
+}
+
+.pre-btn {
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.nxt-btn {
+  right: 0;
+}
+
+.pre-btn img,
+.nxt-btn img {
+  opacity: 9;
+  color: red;
+ 
+}
+
+.pre-btn:hover img,
+.nxt-btn:hover img {
+  opacity: 9;
+  color: red;
+}
+
+.collection-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.collection {
+  position: relative;
+}
+
+.collection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  font-size: 50px;
+  text-transform: capitalize;
+}
+
+.collection:nth-child(3) {
+  grid-column: span 2;
+  margin-bottom: 10px;
+}
+
+    /***********************************************************************************/
+   .nav-dropdown-menu-body ul,
+.nav-dropdown-menu-body li {
+  list-style: none;
+  background: white;
+  border: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.nav-dropdown-reverse {
+  left: auto !important;
+  right: 100% !important;
+}
+
+@media (max-width: 500px) {
+  .cf:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .nav-dropdown-menu-body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .nav-dropdown-menu-body ul,
+  .nav-dropdown-menu-title-link,
+  .nav-dropdown-menu-toggle,
+  nav .nav-dropdown-menu-submenu {
+    border-radius: 0.5rem;
+    padding: 0;
+  }
+  .nav-dropdown-menu-dropicon-bottom {
+    background-color: rgb(231, 231, 231);
+    border-radius: 0.4rem;
+    font-size: 1em;
+    padding: 0.7em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 0 0 transparent;
+    top: 0;
+  }
+  .nav-dropdown-menu-main {
+    margin: 0;
+  }
+  .nav-dropdown-menu-main a {
+    color: #626262;
+    display: block;
+    line-height: 2.6em;
+    padding: 0 10px;
+  }
+  .nav-dropdown-menu-main li:hover {
+    background-color: #f0f0f0;
+  }
+  .nav-dropdown-menu-main ul {
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  }
+  .nav-dropdown-menu-submenu {
+    margin: 0 20px;
+  }
+  .nav-dropdown-menu-submenu li {
+    border-bottom: 1px solid #ccc;
+    border-radius: 0.4rem;
+  }
+  .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-text-after-icons + .nav-dropdown-menu-dropicon-bottom,
+  .nav-dropdown-menu-main,
+  nav input[type="checkbox"],
+  .nav-dropdown-menu-dropicon-right {
+    display: none;
+  }
+  .nav-dropdown-menu-title-link {
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    margin: 2px 0 0 2px;
+  }
+  .nav-dropdown-menu-title-link a {
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.125);
+    transition: color 0.25s ease-out;
+  }
+  .nav-dropdown-menu-title-link a::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .nav-dropdown-menu-title-link a::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-dropdown-menu-title-link a::before,
+  .nav-dropdown-menu-title-link a::after {
+    background-color: #f1c40f;
+    bottom: 0;
+    content: "";
+    height: 3px;
+    position: absolute;
+    transition: width 0.2s ease-out;
+    width: 0;
+  }
+  .nav-dropdown-menu-title-link a:hover {
+    color: #e8245c;
+  }
+  .nav-dropdown-menu-title-link a:hover::before,
+  .nav-dropdown-menu-title-link a:hover::after {
+    background-color: #e8245c;
+    transition-duration: 0.3s;
+    width: 80%;
+  }
+  .nav-dropdown-menu-title-link:hover,
+  .nav-dropdown-menu-submenu:hover {
+    border: 1px solid #f1c40f;
+  }
+  .nav-dropdown-menu-toggle-link {
+    background: #555;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  .nav-dropdown-menu-toggle-link a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-dropdown-menu-toggle-link label {
+    color: #fff;
+  }
+  .nav-logo {
+    padding: 10px;
+  }
+
+  .fa, .fas {
+    font-weight: 900;
+    color: grey;
+}
+  body {
+    background-color: rgb(248, 248, 248);
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+  }
+  nav {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  nav .nav-dropdown-menu-submenu {
+    border: 1px solid red;
+  }
+  nav i {
+    padding: 5px;
+  }
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-submenu,
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-main {
+    display: block;
+  }
+  nav li,
+  .nav-dropdown-menu-toggle {
+    position: relative;
+  }
+}
+
+@media (max-width: 665px) and (min-width: 501px) {
+  .darkerli {
+    background-color: #ededed;
+    text-transform: capitalize;
+  }
+  .darkerlishadow,
+  .nav-dropdown-menu-submenu ul li:first-child {
+    background-color: #ededed;
+    border-top: 1px solid #fff;
+    box-shadow: inset 0 5px 0 0 rgba(90, 90, 90, 0.09);
+  }
+  .darkerlishadowdown,
+  .nav-dropdown-menu-submenu ul li:last-child {
+    background-color: #ededed;
+  }
+  .nav-dropdown-menu-dropicon-bottom {
+    padding: 0.5em;
+  }
+  .nav-dropdown-menu-dropicon-right {
+    background-color: #ddd;
+    padding: 0.08px 10px;
+  }
+  .nav-dropdown-menu-dropicon-right,
+  .nav-dropdown-menu-dropicon-bottom {
+    position: absolute;
+    right: 0;
+    vertical-align: middle;
+  }
+  .nav-dropdown-menu-main {
+    height: 100%;
+    left: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 0;
+    position: absolute;
+    top: 4.5em;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .nav-dropdown-menu-main ul {
+    margin: 0 15px;
+  }
+  .nav-dropdown-menu-main:hover {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 400px;
+  }
+  .nav-dropdown-menu-main:hover .nav-dropdown-menu-dropicon-right {
+    display: inline-block;
+  }
+  .nav-dropdown-menu-submenu a {
+    display: block;
+    line-height: 2em;
+  }
+  .nav-dropdown-menu-submenu ul li,
+  .nav-dropdown-menu-submenu ul {
+    padding-left: 5px;
+  }
+  .nav-dropdown-menu-submenu ul,
+  .nav-dropdown-menu-submenu li,
+  nav-dropdown-menu-body {
+    margin: 0;
+  }
+  .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-dropicon-right,
+  .nav-dropdown-menu-toggle,
+  .nav-dropdown-menu-toggle-link,
+  li > label,
+  nav input[type="checkbox"] {
+    display: none;
+  }
+  nav {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    -webkit-transition: width 0.2s linear;
+    -webkit-user-select: none;
+    background: #f7f7f7;
+    bottom: 0;
+    box-shadow: 1px 0 15px rgba(0, 0, 0, 0.07);
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: width 0.2s linear;
+    user-select: none;
+    width: 55px;
+  }
+
+  nav .nav-dropdown-menu-text-after-icons {
+    background-color: #e6e6e6;
+    display: table-cell;
+    font-family: "Titillium Web", sans-serif;
+    padding-left: 5px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+  }
+  nav .nav-icon {
+    display: table-cell;
+    font-size: 18px;
+    height: 36px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 55px;
+  }
+  nav i {
+    font-size: 25px;
+    list-style: none;
+    padding: 5px 0;
+    position: relative;
+    text-align: center;
+    width: 55px;
+  }
+  nav li > a {
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #8a8a8a;
+    display: table;
+    margin-top: 3px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #fff;
+    transition: all 0.14s linear;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    -webkit-transition: all 0.14s linear;
+  }
+  nav li:focus-within > .nav-dropdown-menu-submenu {
+    display: block;
+  }
+  nav li:focus-within > input[type="checkbox"] .nav-dropdown-menu-submenu {
+    display: block;
+  }
+
+  .nav-dropdown-menu-title-link:hover > a i,
+  .nav-dropdown-menu-submenu li:hover > a {
+    background-color: #00bbbb;
+    color: #fff;
+    text-shadow: 0 0 0;
+  }
+
+  .nav-dropdown-menu-submenu li:hover > a {
+    padding-left: 10px;
+  }
+  nav:hover {
+    opacity: 1;
+    overflow: hidden;
+    width: 400px;
+  }
+}
+
+@media (min-width: 666px) {
+  .cf:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .nav-dropdown-menu,
+  nav li:hover > input[type="checkbox"] + .nav-dropdown-menu-submenu {
+    display: block;
+  }
+  .nav-dropdown-menu-body {
+    flex-basis: 70vw;
+    flex-grow: 1;
+    order: 2;
+  }
+  .nav-dropdown-menu-body a {
+    color: #626262;
+  }
+  .nav-dropdown-menu-main li:hover {
+    background-color: #f0f0f0;
+  }
+  .nav-dropdown-menu-body ul,
+  .nav-dropdown-menu-title-link,
+  .nav-dropdown-menu-toggle,
+  nav .nav-dropdown-menu-submenu {
+    border-radius: 0.5rem;
+    padding: 0;
+  }
+  .nav-dropdown-menu-dropicon-right {
+    display: inline-block;
+    font-size: 1em;
+    padding: 0.8em;
+    text-align: center;
+    text-shadow: 0 0 0 transparent;
+  }
+  .nav-dropdown-menu-dropicon-right,
+  .nav-dropdown-menu-dropicon-bottom {
+    border-radius: 0.4rem;
+    padding: 0.8em 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .nav-dropdown-menu-main {
+    margin: 0;
+  }
+  .nav-dropdown-menu-main ul {
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  }
+  .nav-dropdown-menu-submenu {
+    margin: 0 20px;
+  }
+  .nav-dropdown-menu-submenu li {
+    border-bottom: 1px solid #ccc;
+    border-radius: 0.4rem;
+  }
+  .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-toggle-link,
+  nav input[type="checkbox"],
+  .nav-dropdown-menu-submenu .nav-dropdown-menu-dropicon-bottom {
+    display: none;
+  }
+  .nav-dropdown-menu-title-link {
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    margin: 2px 0 0 2px;
+  }
+  .nav-dropdown-menu-title-link a {
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.125);
+    transition: color 0.25s ease-out;
+  }
+  .nav-dropdown-menu-title-link a::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .nav-dropdown-menu-title-link a::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-dropdown-menu-title-link a::before,
+  .nav-dropdown-menu-title-link a::after {
+    background-color: #f1c40f;
+    bottom: 0;
+    content: "";
+    height: 3px;
+    position: absolute;
+    transition: width 0.2s ease-out;
+    width: 0;
+  }
+  .nav-dropdown-menu-title-link a:hover {
+    color: #e8245c;
+  }
+  .nav-dropdown-menu-title-link a:hover::before,
+  .nav-dropdown-menu-title-link a:hover::after {
+    background-color: #e8245c;
+    transition-duration: 0.3s;
+    width: 80%;
+  }
+  .nav-dropdown-menu-title-link:hover,
+  .nav-dropdown-menu-submenu:hover {
+    border: 1px solid #f1c40f;
+  }
+  .nav-dropdown-menu-main a {
+    padding: 0.8em 1.3em;
+  }
+  .nav-dropdown-menu-toggle:checked + .nav-dropdown-menu,
+  nav li,
+  .nav-dropdown-menu-toggle,
+  nav a,
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-submenu {
+    display: block;
+  }
+  nav {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  nav .nav-dropdown-menu-submenu {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid red;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 3000;
+  }
+  nav .nav-dropdown-menu-submenu .nav-dropdown-menu-submenu {
+    left: 100%;
+    right: auto;
+    top: 0;
+  }
+  nav .nav-dropdown-menu-submenu,
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-toggle {
+    display: none;
+  }
+  nav i {
+    padding: 5px;
+  }
+  nav li {
+    float: left;
+    min-width: 158px;
+    position: relative;
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+}
+  </style>
+</head>
+<body>
+   <!-----------------------------------------------------------------------------------------------
+    - HEADER
+  ------------------------------------------------------------------------------------------------->
+
+  <header>
+
+    
+
+    <div class="header-main">
+
+      <div class="container">
+
+        <a href="#" class="header-logo">
+          <img src="https://us.123rf.com/450wm/taawon/taawon2006/taawon200600021/149330409-online-shop-logo-design-vector-illustration-mobile-online-shopping-logo-vector-template.jpg?ver=6" alt="Anon's logo" width="100" height="55">
+        </a>
+
+        <div class="header-search-container">
+
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name..." style="font-weight:550; font-size: 14px;">
+
+          <button class="search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="header-user-actions">
+
+          <button class="action-btn">
+         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png"style="width:35px;">
+          </button>
+
+
+          <button class="action-btn">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/003/171/239/small_2x/shopping-cart-with-boxes-delivery-service-free-vector.jpg" style="width:50px;">
+            <span class="count">0</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+  <!-----------------------------------------------------------------------------------------------
+    Header ends
+    ---------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------
+  Nav bars starting
+  ------------------------------------------------------------------------------------------------>
+<nav>
+    <!-- Start - nav - dropdown menu - body -->
+    <ul class="nav-dropdown-menu-body">
+      <!-- Start - nav - dropdown menu - toggle -->
+      <li class="nav-dropdown-menu-toggle-link">
+        <label for="tm">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+          Menu
+          <span class="nav-dropdown-menu-toggle-dropicon-bottom">▾</span>
+        </label>
+      </li>
+      <!-- End ___ nav - dropdown menu - toggle -->
+      <!-- Start - nav - dropdown menu - main -->
+      <li>
+        <input type="checkbox" id="tm" />
+        <ul class="nav-dropdown-menu-main cf">
+          <!-- Start - nav - dropdown menu - links -->
+          <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-university"></i><span class="nav-dropdown-menu-text-after-icons">
+                Home</span></a>
+          </li>
+          <!-- End ___ nav - dropdown menu - links -->
+          <!-- Start - nav - dropdown menu - About -->
+          <li class="nav-dropdown-menu-title-link darkerlishadow">
+            <a href="#"><i class="fas fa-monument"></i><span class="nav-dropdown-menu-text-after-icons">
+                About</span>
+              <span class="nav-dropdown-menu-dropicon-bottom">▾</span>
+            </a>
+            <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm00">▾</label>
+            <!-- Start - nav - dropdown menu - About - Box -->
+            <input type="checkbox" id="sm00" />
+            <ul class="nav-dropdown-menu-submenu">
+              <!-- Start - nav - dropdown menu - About - Who We Are? -->
+              <li>
+                <a href="#">Who We Are?
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm01">▾</label>
+                <!-- Start - nav - dropdown menu - About - Who We Are? - Links -->
+                <input type="checkbox" id="sm01" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#">Mission - Values</a>
+                  </li>
+                  <li>
+                    <a href="#">History - Tradition</a>
+                  </li>
+                  <li>
+                    <a href="#">Policies - Disclosures</a>
+                  </li>
+                  <li>
+                    <a href="#">Leadership</a>
+                  </li>
+                </ul>
+                <!-- End ___ nav - dropdown menu - About - Who We Are? - Links -->
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Who We Are? -->
+              <!-- Start - nav - dropdown menu - About - Achievements -->
+              <li>
+                <a href="#">Achievements
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm02">▾</label>
+                <!-- Start - nav - dropdown menu - About - Achievements - Links -->
+                <input type="checkbox" id="sm02" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Facts</a>
+                  </li>
+                  <li>
+                    <a href="#">Honors - Grants - Awards</a>
+                  </li>
+                  <li>
+                    <a href="#">International Projects</a>
+                  </li>
+                  <li>
+                    <a href="#">Educational Effectiveness</a>
+                  </li>
+                  <li>
+                    <a href="#">Leadership</a>
+                  </li>
+                </ul>
+                <!-- End ___ nav - dropdown menu - About - Achievements - Links -->
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Achievements -->
+              <!-- Start - nav - dropdown menu - About - Reach Us -->
+              <li>
+                <a href="#">Reach Us
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm03">▾</label>
+                <!-- Start - nav - dropdown menu - About - Reach Us - Links -->
+                <input type="checkbox" id="sm03" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Maps - Directions</a>
+                  </li>
+                  <li>
+                    <a href="#">F@Q</a>
+                  </li>
+                  <li>
+                    <a href="#">Subscribe</a>
+                  </li>
+                  <li>
+                    <a href="#">Hours Of Operation</a>
+                  </li>
+                </ul>
+                <!-- End ___ nav - dropdown menu - About - Reach Us - Links -->
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Reach Us -->
+              <!-- Start - nav - dropdown menu - About - Links -->
+              <li>
+                <a href="#">Contact</a>
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Links -->
+            </ul>
+            <!-- End ___ nav - dropdown menu - About - Box -->
+          </li>
+          <!-- End ___ nav - dropdown menu - About -->
+          <!-- Start - nav - dropdown menu - Student -->
+          <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-globe"></i><span class="nav-dropdown-menu-text-after-icons">
+                Categories</span>
+              <span class="nav-dropdown-menu-dropicon-bottom">▾</span>
+            </a>
+            <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm04">▾</label>
+            <!-- Start - nav - dropdown menu - Student - Box -->
+            <input type="checkbox" id="sm04" />
+            <ul class="nav-dropdown-menu-submenu">
+              <!-- Start - nav - dropdown menu - Student - Future Students -->
+              <li>
+                <a href="#">Raspberry Pi
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm05">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Future Students - Box -->
+                <input type="checkbox" id="sm05" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Raspberry Pi Main Board
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Raspberry Pi MUC</a>
+                      </li>
+                      <li>
+                        <a href="#">Raspberry Pi 4</a>
+                      </li>
+                      <li>
+                        <a href="">Raspberry Pi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Raspberry Pi Zero</a>
+                      </li>
+                      <li>
+                        <a href="">Raspberry Pi CM</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Kits
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Kits for RPi MCU</a>
+                      </li>
+                      <li>
+                        <a href="#">Kits for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi Zero</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi CM</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Power
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Power for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">Power for RPi 3/Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi HAT
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">HAT for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">HAT for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">HAT for RPi Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Enclosure
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Enclosure for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">Enclosure for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Enclosure for RPi Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Display
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Display for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">Display for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Display for RPi Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li><a href="">Raspberry Pi Camera</a></li>
+                  <li>
+                    <a href="#">Raspberry Pi Accessories
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Accessories for RPi MCU</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="">Accessories for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Accessories for RPi Zero</a>
+                      </li>
+                      <li>
+                        <a href="">Accessories for RPi CM</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li><a href="">Books</a></li>
+                  <!-- Start - nav - dropdown menu - Student - Future Students - Degree Programs -->
+                  <!---- - dropdown menu - Student - Future Students - Non-Degree Programs -->
+                </ul>
+                <!-- End ___ nav - dropdown menu - Student - Future Students - Box -->
+              </li>
+              <!-- End ___ nav - dropdown menu - Student - Future Students -->
+              <!-- Start - nav - dropdown menu - Student - Current Students -->
+              <li>
+                <a href="#">Arduino Ecosystem
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Official Arduino Main Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Compatible Arduino Main Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Shields for Ardunio</a>
+                  </li>
+                  <li>
+                    <a href="#">Kits Based on Arduino</a>
+                  </li>
+                  <li>
+                    <a href="#">Accessories for Arduino</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  
+                  <!-- End ___ nav - dropdown menu - Student - Opportunities -->
+                </ul>
+                <!-- End ___ nav - dropdown menu - Student - Current Students - Box -->
+              </li>
+              <!-- End ___ nav - dropdown menu - Student - Current Students -->
+              <!-- Start - nav - dropdown menu - Student - Links -->
+              
+              <!-- End ___ nav - dropdown menu - Student - Links -->
+                            <li>
+                <a href="#">micro:bit
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Micro:bit Main Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:bit Kits</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:bit Robot</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:Expansion Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:Enclosure</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:Power and Wire</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:bit Accessories</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  
+                  <!-- End ___ nav - dropdown menu - Student - Opportunities -->
+                </ul>
+                <!-- End ___ nav - dropdown menu - Student - Current Students - Box -->
+              </li>
+
+              <!-- End ___ nav - dropdown menu - Student - Current Students -->
+              <!-- Start - nav - dropdown menu - Student - Links -->
+              
+              <!-- End ___ nav - dropdown menu - Student - Links -->
+            <li>
+                <a href="#">Motor & Motor Driver
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Motor Driver
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">DC Motor Driver</a>
+                      </li>
+                      <li>
+                        <a href="#">SmartDrive DC Motor Controller</a>
+                      </li>
+                      <li>
+                        <a href="#">Stepper Driver</a>
+                      </li>
+                      <li>
+                        <a href="#">Servo Controller</a>
+                      </li>
+                      
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                  <li>
+                    <a href="#">Motors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">DC Brushed Motor</a>
+                      </li>
+                      <li>
+                        <a href="#">Linear Motor</a>
+                      </li>
+                      <li>
+                        <a href="#">Stepper Motor</a>
+                      </li>
+                      <li>
+                        <a href="#">Toy Motor </a>
+                      </li>
+                      <li>
+                        <a href="#">Servo Motor</a>
+                      </li>
+                      <li>
+                    <a href="#">VEXTA DC Brushless Motor
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-100Watt</a>
+                      </li>
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-50Watt</a>
+                      </li>
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-30Watt</a>
+                      </li>
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-15Watt</a>
+                      </li>
+                    </ul>
+                    <li>
+                        <a href="#">Miscellaneous</a>
+                      </li>
+
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Development Tools
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Maker Series</a>
+                  </li>
+                  <li>
+                    <a href="#">Education Training Kit
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Embedded System Training Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">Robotics Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">Robotics Arm</a>
+                      </li>
+                      <li>
+                        <a href="#">IOT Development Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">DIY Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">DIY Kit for Junior</a>
+                      </li>
+                    </ul>
+                     <li>
+                    <a href="#">PIC Microcontroller
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Main Board</a>
+                      </li>
+                      <li>
+                        <a href="#">IC</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories</a>
+                      </li>
+                      <li>
+                        <a href="#">Training Kit</a>
+                      </li>
+                    </ul>
+                  <li>
+                    <a href="#">Computer Interface</a>
+                  </li>
+                  <li>
+                    <a href="#">ARM Development Tool</a>
+                  </li>
+                  <li>
+                    <a href="#">Beagle Bone</a>
+                  </li>
+                  <li>
+                    <a href="#">FPGA</a>
+                  </li>
+                  <li>
+                    <a href="#">Software</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Tools and Equipment
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Multimeter</a>
+                      </li>
+                      <li>
+                        <a href="#">Oscilloscope</a>
+                      </li>
+                       <li>
+                    <a href="#">Soldering/Desoldering
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Soldering Accessories</a>
+                      </li>
+                      <li>
+                        <a href="#">Desoldering</a>
+                      </li>
+                      <li>
+                        <a href="#">Soldering</a>
+                      </li>
+                      
+                    </ul>
+                      <li>
+                        <a href="#">DAQ</a>
+                      </li>
+                      <li>
+                        <a href="#">Tools</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                 
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Sensors
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="krish ecommerence price.html">Sensor Kit</a>
+                  </li>
+                  <li>
+                    <a href="#">Infrared/Light</a>
+                  </li>
+                  <li>
+                    <a href="#">Line Tracking</a>
+                  </li>
+                  <li>
+                    <a href="#">Ultrasonic</a>
+                  </li>
+                   <li>
+                    <a href="#">Gas</a>
+                  </li>
+                   <li>
+                    <a href="#">Color</a>
+                  </li>
+                   <li>
+                    <a href="#">Liquid/Flow/pH</a>
+                  </li>
+                   <li>
+                    <a href="#">Biometric Sensors</a>
+                  </li>
+                   <li>
+                    <a href="#">Flex/Force/Touch</a>
+                  </li>
+                   <li>
+                    <a href="#">Temperature/Humidity/Pressure</a>
+                  </li>
+                   <li>
+                    <a href="#">GPS/Compass</a>
+                  </li>
+                   <li>
+                    <a href="#">Rotary Encoder</a>
+                  </li>
+                   
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Proximity
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Capacitive Proximity Sensors</a>
+                      </li>
+                      <li>
+                        <a href="#">Inductive Proximity Sensors</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                 <li>
+                    <a href="#">Camera</a>
+                  </li>
+                   <li>
+                    <a href="#">Laser Range Finder</a>
+                  </li>
+                   <li>
+                    <a href="#">Motion</a>
+                  </li>
+                   <li>
+                    <a href="#">Current Sensor</a>
+                  </li>
+                   <li>
+                    <a href="#">Sound</a>
+                  </li>
+                   <li>
+                    <a href="#">Other Sensors</a>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Miscellaneous
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Merchandise</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Books and Magazine
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Magazine</a>
+                      </li>
+                      <li>
+                        <a href="#">Books</a>
+                      </li>
+                     
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                   <li>
+                    <a href="#">Workshop & Training</a>
+                  </li>
+                   <li>
+                    <a href="#">Maker's Selection</a>
+                  </li>
+                   <li>
+                    <a href="#">Stock Clearance</a>
+                  </li>
+                   <li>
+                    <a href="#">Discontinued Items</a>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">3D Modeling
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">3D Printer</a>
+                  </li>
+                  <li>
+                    <a href="#">Laser Cutter/Engrave</a>
+                  </li>
+                  <li>
+                    <a href="#">Filament</a>
+                  </li>
+                  <li>
+                    <a href="#">3D Accessories</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">AI/DL
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Nvidia Jetson
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Nvidia Jetson Main Board</a>
+                      </li>
+                      <li>
+                        <a href="#">Nvidia Jetson Kits</a>
+                      </li>
+                      <li>
+                        <a href="#">Nvidia Jetson Camera</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories for Nvidia Jetson</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+
+                  <li>
+                    <a href="#">Google Coral</a>
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                  <li>
+                    <a href="#">Other AI Platform
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">AI Main Board</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories</a>
+                      </li>
+                     
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Wireless & IOT
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">GPS</a>
+                  </li>
+                  <li>
+                    <a href="#">LoRa</a>
+                  </li>
+                  <li>
+                    <a href="#">GSM</a>
+                  </li>
+                  <li>
+                    <a href="#">WiFi</a>
+                  </li>
+                  <li>
+                    <a href="#">RF</a>
+                  </li>
+                  <li>
+                    <a href="#">RFID</a>
+                  </li>
+                  <li>
+                    <a href="#">XBee</a>
+                  </li>
+                  <li>
+                    <a href="#">Bluetooth</a>
+                  </li>
+                  <li>
+                    <a href="#">Infrared(IR)</a>
+                  </li>
+                  <li>
+                    <a href="#">Smart Home</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Junior Makers
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">12 Years Old & Above</a>
+                  </li>
+                  <li>
+                    <a href="#">8 Years Old & Above</a>
+                  </li>
+                  <li>
+                    <a href="#">6 Years Old & Above</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Robotics & Electronics
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Hardware
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Acryclic</a>
+                      </li>
+                      <li>
+                        <a href="#">Project Casing</a>
+                      </li>
+                      <li>
+                    <a href="#">Bolts and nuts
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Nut</a>
+                      </li>
+                      <li>
+                      <a href="#">Bolts 
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">M5 Phillip Pan Head Bolts</a>
+                      </li>
+                      <li>
+                        <a href="#">M4 Phillip Pan Head Bolts</a>
+                      </li>
+                      <li>
+                        <a href="#">M3 Phillip Pan Head Bolts</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                  </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">PCB Spacer
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">PCB Spacer(screw & nut)</a>
+                      </li>
+                      <li>
+                        <a href="#">PCB Spacer(screw & screw)</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                  </li>
+                      <li>
+                        <a href="#">Pneumatic</a>
+                      </li>
+                      <li>
+                        <a href="#">Motor Coupling</a>
+                      </li>
+                      <li>
+                        <a href="#">Motor Bracket</a>
+                      </li>
+                      <li>
+                        <a href="#">Servo Bracket</a>
+                      </li>
+                      <li>
+                        <a href="#">Sensor Bracket</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                   <li>
+                    <a href="#">Robot Accessories
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Robit Chassis</a>
+                      </li>
+                      <li>
+                        <a href="#">Robit Gripper</a>
+                      </li>
+                      <li>
+                        <a href="#">Hand-help Controller</a>
+                      </li>
+                      <li>
+                        <a href="#">Mini Wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Mid-size Wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Transwheel</a>
+                      </li>
+                      <li>
+                        <a href="#">omni Wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Mecanum wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Castors</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                   <li>
+                    <a href="#">rero
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Kits</a>
+                      </li>
+                      <li>
+                        <a href="#">Sensors</a>
+                      </li>
+                      <li>
+                        <a href="#">Spare Parts</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                   <li>
+                    <a href="#">Power
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Common Batteries</a>
+                      </li>
+                      <li>
+                        <a href="#">Lead Acid rechargeable battery and charger</a>
+                      </li>
+                      <li>
+                        <a href="#">lipo rechargeable battery and charger</a>
+                      </li>
+                      <li>
+                        <a href="#">lithium ion rechargeable battery and charger</a>
+                      </li>
+                      <li>
+                        <a href="#">wireless</a>
+                      </li>
+                      <li>
+                        <a href="#">solar cell/solar panel</a>
+                      </li>
+                      <li>
+                        <a href="#">AC-DC Adapter</a>
+                      </li>
+                      <li>
+                        <a href="#">switching power supply</a>
+                      </li>
+                      <li>
+                        <a href="#">DC power supply</a>
+                      </li>
+                      <li>
+                        <a href="#">switching Module</a>
+                      </li>
+                      <li>
+                        <a href="#">shunt regulator</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                  <li>
+                    <a href="#">Electronic Components
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                    <a href="#">Wire/Cable
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">USB Cable</a>
+                      </li>
+                      <li>
+                        <a href="#">Jumper wire</a>
+                      </li>
+                      <li>
+                        <a href="#">Rainbow Cable</a>
+                      </li>
+                      <li>
+                        <a href="#">Multicore wire AWG</a>
+                      </li>
+                      <li>
+                        <a href="#">Single core wire</a>
+                      </li>
+                      <li>
+                        <a href="#">Wrapping wire AWG 30</a>
+                      </li>
+                      <li>
+                        <a href="#">others</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Experiment Boards
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Breadboards</a>
+                      </li>
+                      <li>
+                        <a href="#">Copper Clad Board</a>
+                      </li>
+                      <li>
+                        <a href="#">DIY Prototype Board</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Connectors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">USB Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">D-Subminiature Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">Terminal Block</a>
+                      </li>
+                      <li>
+                        <a href="#">IDC socket</a>
+                      </li>
+                      <li>
+                        <a href="#">PCB Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">Battery Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">Header Pin</a>
+                      </li>
+                      <li>
+                        <a href="#">Others</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Sound</a>
+                      </li>
+                  <li>
+                    <a href="#">IC Sockets
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">ZIF Socket</a>
+                      </li>
+                      <li>
+                        <a href="#">Turn Pin IC Socket</a>
+                      </li>
+                      <li>
+                        <a href="#">IC Socket</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Relays</a>
+                      </li>
+                      <li>
+                        <a href="#">Crystal/Resonator</a>
+                      </li>
+                  <li>
+                    <a href="#">LED/LCD
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">LCD</a>
+                      </li>
+                      <li>
+                        <a href="#">Matrix Display</a>
+                      </li>
+                      <li>
+                        <a href="#">Segment Display</a>
+                      </li>
+                      <li>
+                        <a href="#">LED</a>
+                      </li>
+                      <li>
+                        <a href="#">EInk/EPaper</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">switches
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Others</a>
+                      </li>
+                      <li>
+                        <a href="#">Keypad</a>
+                      </li>
+                      <li>
+                        <a href="#">DIP Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Limit Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Rocket Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Slide Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Toggle Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Push Button</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Capacitors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Multilayer Capacitor</a>
+                      </li>
+                      <li>
+                        <a href="#">Electrolytic Capacitor</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Diodes
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Bridge Rectifier</a>
+                      </li>
+                      <li>
+                        <a href="#">Zener Diode</a>
+                      </li>
+                      <li>
+                        <a href="#">Diodes</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Resistors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">0.25 watt Resistor</a>
+                      </li>
+                      <li>
+                        <a href="#">5 watt Resistor</a>
+                      </li>
+                      <li>
+                        <a href="#">Resistor Bar</a>
+                      </li>
+                      <li>
+                        <a href="#">Variable Resistor</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Transistors</a>
+                      </li>
+                  <li>
+                    <a href="#">Voltage Regulator
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Negative Voltage Regulator</a>
+                      </li>
+                      <li>
+                        <a href="#">Positive Voltage Regulator</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Breakout Board</a>
+                      </li>
+                  <li>
+                    <a href="#">IC
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">MCU</a>
+                      </li>
+                      <li>
+                        <a href="#">74 Serious</a>
+                      </li>
+                      <li>
+                        <a href="#">Others</a>
+                      </li>
+                      <li>
+                        <a href="#">IC Breakout Board</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                      <li>
+                        <a href="#">EL Wire</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+
+                  <li>
+                        <a href="#">Makeblock</a>
+                      </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          
+            </ul>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          </li>
+          <!-- End ___ nav - dropdown menu - Student -->
+          <!---------------------------------------------------------------------------------------------->
+ <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-fire"></i><span class="nav-dropdown-menu-text-after-icons">
+                Hot Deals</span></a>
+          </li>
+          <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-cart-arrow-down"></i><span class="nav-dropdown-menu-text-after-icons">
+                Discover</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-tags"></i><span class="nav-dropdown-menu-text-after-icons">
+                New Arrivals</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-bullhorn"></i><span class="nav-dropdown-menu-text-after-icons">
+                Best Sellers</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="far fa-handshake"></i><span class="nav-dropdown-menu-text-after-icons">
+                Brands</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-shopping-bag"></i><span class="nav-dropdown-menu-text-after-icons">
+                All Product</span></a>
+          </li>
+          <!---------------------------------------------------------------------------------------------->
+          <!-- Start - nav - dropdown menu - Alumni -->
+          
+    </ul>
+    <!-- End ___ nav - dropdown menu - links -->
+  </nav>
+ <!-------------------------------------------------------------------------------------------------
+  Nav bars ends
+  ------------------------------------------------------------------------------------------------>
+
+<br>
+
+          <!---------------------------------------------------------------------------------------------
+            - PRODUCT GRID
+          ---------------------------------------------------------------------------------------------->
+<section class="product"> 
+        <h2 class="product-category">best selling</h2>
+        <button class="pre-btn"><img src="arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="arrow.png" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <a href="product details.html"><img src="https://static.cytron.io/image/cache/catalog/products/CM4-NANOB/CM4-NANOB_e-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button></a>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand" >brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/KIT-MM-WR/KIT-MM-WR_b-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/WR-JW-MM65%20(3)-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/TO-CP413G/TO-CP413G-a-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/DS-LCD-162A-I2C/DS-LCD-162A-I2Ca-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-QW-LSM6D/SN-QW-LSM6D-main-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-SR04-DB/SN-SR04-DB%20(e)%201-800x800.png" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/Male-to-Male-Jumper-Wire-(75-pack)-600x600-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-DP-HDMIF/WR-DP-HDMIF%20(a)-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/MD10C/10amp-dc-motor-driver-a5811-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!---------------------------------------------------------------------------------------------
+            - PRODUCT GRID
+          ---------------------------------------------------------------------------------------------->
+<section class="product"> 
+        <h2 class="product-category">best selling</h2>
+        <button class="pre-btn"><img src="arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="arrow.png" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/CM4-NANOB/CM4-NANOB_e-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand" >brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/RPI-CM4-PITRAY/RPI-CM4-PITRAY_h-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/WR-JW-MM65%20(3)-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/TO-CP413G/TO-CP413G-a-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/DS-LCD-162A-I2C/DS-LCD-162A-I2Ca-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-QW-LSM6D/SN-QW-LSM6D-main-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-SR04-DB/SN-SR04-DB%20(e)%201-800x800.png" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/Male-to-Male-Jumper-Wire-(75-pack)-600x600-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-DP-HDMIF/WR-DP-HDMIF%20(a)-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/MD10C/10amp-dc-motor-driver-a5811-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!---------------------------------------------------------------------------------------------
+            - PRODUCT GRID
+          ---------------------------------------------------------------------------------------------->
+<section class="product"> 
+        <h2 class="product-category">best selling</h2>
+        <button class="pre-btn"><img src="arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="arrow.png" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/CM4-NANOB/CM4-NANOB_e-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand" >brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/RPI-CM4-PITRAY/RPI-CM4-PITRAY_h-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/WR-JW-MM65%20(3)-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/TO-CP413G/TO-CP413G-a-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/DS-LCD-162A-I2C/DS-LCD-162A-I2Ca-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-QW-LSM6D/SN-QW-LSM6D-main-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-SR04-DB/SN-SR04-DB%20(e)%201-800x800.png" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/Male-to-Male-Jumper-Wire-(75-pack)-600x600-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-DP-HDMIF/WR-DP-HDMIF%20(a)-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/MD10C/10amp-dc-motor-driver-a5811-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!---------------------------------------------------------------------------------------------
+            - PRODUCT GRID
+          ---------------------------------------------------------------------------------------------->
+<section class="product"> 
+        <h2 class="product-category">best selling</h2>
+        <button class="pre-btn"><img src="arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="arrow.png" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/CM4-NANOB/CM4-NANOB_e-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand" >brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/RPI-CM4-PITRAY/RPI-CM4-PITRAY_h-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/WR-JW-MM65%20(3)-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/TO-CP413G/TO-CP413G-a-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/DS-LCD-162A-I2C/DS-LCD-162A-I2Ca-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-QW-LSM6D/SN-QW-LSM6D-main-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/SN-SR04-DB/SN-SR04-DB%20(e)%201-800x800.png" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/Male-to-Male-Jumper-Wire-(75-pack)-600x600-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/WR-DP-HDMIF/WR-DP-HDMIF%20(a)-512x512.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="https://static.cytron.io/image/cache/catalog/products/MD10C/10amp-dc-motor-driver-a5811-800x800.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the cloth..</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!------------------------------------------------------------------------------------------
+    - FOOTER
+  --------------------------------------------------------------------------------------------->
+
+  <footer>
+
+    
+    <div class="footer-nav">
+
+      <div class="container">
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">LEARN DIGITAL MAKING</h2>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Fashion</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Electronic</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Cosmetic</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Health</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Watches</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            <h2 class="nav-title">ABOUT</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Prices drop</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">New products</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Best sales</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Contact us</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Sitemap</a>
+          </li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            <h2 class="nav-title">INFORMATION</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Delivery</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Legal Notice</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Terms and conditions</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">About us</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Secure payment</a>
+          </li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Services</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Prices drop</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">New products</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Best sales</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Contact us</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Sitemap</a>
+          </li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Contact</h2>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <address class="content">
+              419 State 414 Rte
+              Beaver Dams, New York(NY), 14812, USA
+            </address>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+
+            <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Follow Us</h2>
+          </li>
+
+          <li>
+            <ul class="social-link">
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div class="container">
+
+        <img src="https://raw.githubusercontent.com/codewithsadee/anon-ecommerce-website/master/assets/images/payment.png" alt="payment method" class="payment-img">
+
+       
+      </div>
+
+    </div>
+
+  </footer>
+
+ <!------------------------------------------------------------------------------------------
+ Footer ends
+ ------------------------------------------------------------------------------------------>        
+
+    <script type="text/javascript">
+    // dropdown menu on hover
+var $screensize = $(window).width();
+$(".nav-dropdown-menu-body").on("mouseover", function () {
+  $(this)
+    .find("> .nav-dropdown-menu-submenu")
+    .stop(true, true)
+    .slideDown("fast");
+  $(this).bind("mouseleave", function () {
+    $(this)
+      .find("> .nav-dropdown-menu-submenu")
+      .stop(true, true)
+      .css("display", "none");
+  });
+});
+
+//Change position for drop down
+$(function () {
+  $(".nav-dropdown-menu-body li").on("mouseenter mouseleave", function (e) {
+    if ($(".nav-dropdown-menu-submenu", this).length) {
+      var elm = $(".nav-dropdown-menu-submenu", this);
+      var off = elm.offset();
+      var l = off.left;
+      var w = elm.width();
+      var docW = $(window).width();
+
+      var isEntirelyVisible = l + w <= docW;
+
+      if (!isEntirelyVisible) {
+        $(elm).addClass("nav-dropdown-reverse");
+      } else {
+        $(elm).removeClass("nav-dropdown-reverse");
+      }
+    }
+  });
+});
+
+  </script>
+
+  <!--
+    - ionicon link
+  -->
+  <script>
+        const productContainers = [...document.querySelectorAll('.product-container')];
+const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+productContainers.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+        item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () => {
+        item.scrollLeft -= containerWidth;
+    })
+})
+    </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
