@@ -1,0 +1,3200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Narrow&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="ecommerce.css">
+<style type="text/css">
+.popup-trigger {
+  display: block;
+  width: 170px;
+  right: 2rem;
+  margin: 3em auto;
+  text-align: center;
+  color: #FFF;
+  font-size: 18px;
+  padding:1rem 2rem;
+  text-decoration:none;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 50em;
+  background: transparent;
+ 
+  transition:300ms all;
+}
+
+.popup-trigger:hover {
+    opacity:.8;
+}
+
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1000;
+  width: 100%;
+  background-color:rgb(0,0,0);
+   background-color: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition:500ms all;
+
+}
+
+.popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+ transition:1s all;
+}
+
+.popup-container {
+  transform:translateY(-50%);
+  transition:500ms all;
+  position: relative;
+  width: 50%;
+  margin: 2em auto;
+  top: 5%;
+  padding:2rem;
+  background: #FFF;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.is-visible .popup-container {
+  transform:translateY(0);
+  transition:500ms all;
+}
+
+.popup-container .popup-close {
+  position: absolute;
+  top: 8px;
+  font-size:0;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+}
+
+
+.popup-container .popup-close::before,
+.popup-container .popup-close::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 14px;
+  height: 3px;
+  background-color: red;
+}
+
+.popup-container .popup-close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 8px;
+}
+
+.popup-container .popup-close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: 8px;
+}
+
+
+.popup-container .popup-close:hover:before,
+.popup-container .popup-close:hover:after {
+  background-color:#35a785;
+  transition:300ms all;
+}
+
+
+/*DEFAULT*/
+a{
+text-decoration:none;
+}
+.title{
+font-size:1.5em;
+font-family: 'Archivo Black', sans-serif;
+}
+.sub-title{
+display:block;
+font-size: 14px;
+font-weight: bold;
+color: #555;
+}
+li{
+list-style:none;
+font-size: 14px;
+font-weight: bold;
+color: #555;
+}
+input,button{
+outline:none;
+}
+.btn1{
+padding:10px 20px;
+border-radius:20px;
+text-align:center;
+color:#fff;
+background:#000;
+width:90%;
+border:0;
+font-size: 12px;
+font-weight: bold;
+margin-left: 15px;
+}
+.btn2{
+padding:10px 20px;
+text-align:center;
+color:#fff;
+background:#f79500;
+width:80%;
+border:0;
+font-size: 12px;
+font-weight: bold;
+margin-left: 26px;
+}
+.btn3{
+padding:10px 20px;
+text-align:center;
+color:#fff;
+background:#384aeb;
+width:150%;
+border:0;
+font-size: 12px;
+font-weight: bold;
+}
+.btn4{
+padding:10px 20px;
+text-align:center;
+color:#000;
+border-radius:20px;
+background:#fff;
+width:150px;
+border:0;
+margin:0 20px;
+box-shadow:0px 6px 16px -6px rgba(1,1,1,0.5);
+font-weight: 550;
+font-size: 13px;
+
+}
+label{
+color:gray;
+font-size: 14px;
+font-weight: bold;
+}
+.checked{
+color:#f79500;
+}
+
+/*ANIMATION*/
+.animate {
+-webkit-animation: animatezoom 0.6s;
+animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+from {-webkit-transform: scale(0)} 
+to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+from {transform: scale(0)} 
+to {transform: scale(1)}
+}
+.inline-photo {
+opacity: 0;
+transform: translateY(4em) rotateZ(-0deg);
+transition: transform 0s .2s cubic-bezier(0,1,.3,1),opacity .3s .2s ease-out;
+will-change: transform, opacity;
+}
+.inline-photo.is-visible {
+opacity: 1;
+transform: rotateZ(-0deg);
+margin-top: -100px;
+}
+.inline-photo2 {
+opacity: 0;
+transform: translateX(-15em) rotateZ(-0deg);
+transition: transform 0s .2s cubic-bezier(0,1,.3,1),opacity .3s .25s ease-out;
+will-change: transform, opacity;
+}
+.inline-photo2.is-visible2 {
+opacity: 1;
+transform: rotateZ(-0deg);
+}
+
+
+
+
+.banner{
+width:100%;
+height:150px;
+background-image:url("https://i.ibb.co/vcBQN6m/aboutus-header.webp");
+background-repeat:no-repeat;
+background-size:cover;
+background-attachment:fixed;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.banner section,.banner a{
+color:#fff;
+margin:0 10px;
+}
+
+
+
+
+/*PRODUCT CONTAINER*/
+.product_container{
+width:90%;
+margin:auto;
+position:relative;
+padding:5vh 0;
+margin:5vh auto;
+}
+
+.slide_image_color{
+border:2px solid #384aeb;
+}
+
+.sidebar{
+position:absolute;
+margin-left: 150px;
+top:0;
+width:10%;
+padding:10px;
+background: transparent;
+margin-top: 60px;
+}
+
+.sidebar img{
+display:block;
+margin:2px 0;
+}
+
+.Product_tumbnail{
+width:50%;
+margin:auto;
+}
+
+.product_tumbnail img{
+width:90%;
+height:90%;
+}
+
+.details{
+width:35%;
+position:absolute;
+top:0;
+right:0;
+float:right;
+padding:5vh 0;
+}
+
+.price{
+color:#555;
+font-size:14px;
+}
+
+.sub-details li{
+padding:10px 0;
+font-size: 15px;
+color: #555;
+font-weight: bold;
+}
+
+.sub-details li i{
+color:#384aeb;
+margin:0 5px;
+}
+
+table{
+width:100%;
+}
+
+table td{
+width:30%;
+padding:0px;
+}
+
+#pincode{
+border:0;
+border-bottom:1px solid gray;
+padding:0 10px;
+font-size: 14px;
+font-weight: bold;
+}
+
+.star-ratings-css {
+unicode-bidi: bidi-override;
+color: #fff;
+font-size: 1.6rem;
+display: inline-block;
+margin: 0 auto;
+position: relative;
+padding: 0;
+margin:0 10%;
+}
+.star-ratings-css-top {
+color: #3b5998;
+padding: 0;
+position: absolute;
+z-index: 1;
+display: block;
+top: 0;
+left: 0;
+overflow: hidden;
+animation: rating 2s forwards;
+}
+.star-ratings-css-bottom {
+padding: 0;
+display: block;
+z-index: 0;
+}
+@keyframes rating {
+from {
+width: 0;
+}
+to {
+width: 70%;
+}
+}
+@font-face {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+src: url(https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
+}
+@font-face {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+src: url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNirkOUuhs.ttf) format('truetype');
+}
+@font-face {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+src: url(https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN7rgOUuhs.ttf) format('truetype');
+}
+
+em {
+font-style: italic;
+}
+@media (max-width:1180px){
+.product_container{
+min-width:95%;
+  width:100%;
+}
+.sidebar{
+position:static;
+width:100%;
+margin:auto;
+display:block;
+padding:10px;
+}
+.sidebar img{
+display:inline-block;
+margin:0px 2px;
+max-width:33%;
+max-height:100px;
+}
+.Product_tumbnail{
+width:100%;
+margin:auto;
+}
+
+.Product_tumbnail img{
+max-width:100%;
+margin:auto;
+margin-top: -285px;
+}
+
+
+.details{
+width:100%;
+position:static;
+float:none;
+padding:5vh 0;
+}
+}
+p{
+	font-size: 14px;
+	font-weight: bold;
+	color: #555;
+	line-height: 25px;
+}
+
+
+
+.reviews{
+width:100%;
+background:white;
+padding:5vh 0;
+position:relative;
+}
+
+.review_sidebar{
+width:90%;
+margin:auto;
+}
+
+.review_sidebar button{
+display:inline-block;
+}
+
+.review_container{
+width:90%;
+margin:auto;
+padding:5vh 0;
+}
+
+.active_button{
+background:#384aeb;
+color:#fff;
+transition:0.5s;
+}
+.specification_table{
+border-collapse:collapse;
+}
+.specification_table td{
+width:50%;
+padding:10px 25px;
+color:#555;
+border-bottom:1px solid rgba(1,1,1,0.1);
+font-size: 14px;
+font-weight: bold;
+}
+
+.user_star_ratings{
+width:50%;
+}
+
+.overall_rating,.rating_blocks{
+width:40%;
+display:inline-block;
+text-align:center;
+}
+.overall_rating{
+background:#fff;
+padding:30px 20px;
+width:30%;
+position:relative;
+top:-40px;
+}
+.rating_blocks ul{
+position:relative;
+left:-20px;
+}
+
+.rating_blocks ul li{
+padding:5px 0;
+}
+
+.reviews_recorded ul li img{
+border-radius:50%;
+}
+
+.reviews_recorded ul li b{
+display:block;
+}
+
+.enter_user_star_ratings{
+width:40%;
+position:absolute;
+top:20vh;
+right:3vh;
+background:#fff;
+padding:30px;
+}
+
+.enter_user_star_ratings textarea{
+width:90%;
+padding:5%;
+height:150px;
+display:block;
+margin:20px 0; 
+resize:none;
+outline:none;
+} 
+
+@media (max-width:1000px){
+.specification_table td{
+width:95%;
+padding:10px 25px;
+color:gray;
+border-bottom:1px solid rgba(1,1,1,0.1);
+}
+
+.user_star_ratings{
+width:95%;
+margin:15vh 0;
+}
+.review_sidebar button{
+margin:0 5px;
+width:100px;
+font-size:11px;
+display:inline-block;
+}
+.overall_rating,.rating_blocks{
+width:95%;
+display:block;
+}
+.enter_user_star_ratings{
+width:90%;
+position:static;
+background:#fff;
+padding:20px;
+}
+}
+
+.rating-box {
+display: inline-block;
+}
+.rating-box .rating-container {
+direction: rtl !important;
+}
+.rating-box .rating-container label {
+display: inline-block;
+margin: 15px 0;
+color: #d4d4d4;
+cursor: pointer;
+font-size: 30px;
+transition: color 0.2s;
+}
+.rating-box .rating-container input {
+display: none;
+}
+.rating-box .rating-container label:hover, .rating-box .rating-container label:hover ~ label, .rating-box .rating-container input:checked ~ label {
+color: gold;
+}
+
+    /***********************************************************************************/
+   .nav-dropdown-menu-body ul,
+.nav-dropdown-menu-body li {
+  list-style: none;
+  background: white;
+  border: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.nav-dropdown-reverse {
+  left: auto !important;
+  right: 100% !important;
+}
+
+@media (max-width: 500px) {
+  .cf:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .nav-dropdown-menu-body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .nav-dropdown-menu-body ul,
+  .nav-dropdown-menu-title-link,
+  .nav-dropdown-menu-toggle,
+  nav .nav-dropdown-menu-submenu {
+    border-radius: 0.5rem;
+    padding: 0;
+  }
+  .nav-dropdown-menu-dropicon-bottom {
+    background-color: rgb(231, 231, 231);
+    border-radius: 0.4rem;
+    font-size: 1em;
+    padding: 0.7em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 0 0 transparent;
+    top: 0;
+  }
+  .nav-dropdown-menu-main {
+    margin: 0;
+  }
+  .nav-dropdown-menu-main a {
+    color: #626262;
+    display: block;
+    line-height: 2.6em;
+    padding: 0 10px;
+  }
+  .nav-dropdown-menu-main li:hover {
+    background-color: #f0f0f0;
+  }
+  .nav-dropdown-menu-main ul {
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  }
+  .nav-dropdown-menu-submenu {
+    margin: 0 20px;
+  }
+  .nav-dropdown-menu-submenu li {
+    border-bottom: 1px solid #ccc;
+    border-radius: 0.4rem;
+  }
+  .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-text-after-icons + .nav-dropdown-menu-dropicon-bottom,
+  .nav-dropdown-menu-main,
+  nav input[type="checkbox"],
+  .nav-dropdown-menu-dropicon-right {
+    display: none;
+  }
+  .nav-dropdown-menu-title-link {
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    margin: 2px 0 0 2px;
+  }
+  .nav-dropdown-menu-title-link a {
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.125);
+    transition: color 0.25s ease-out;
+  }
+  .nav-dropdown-menu-title-link a::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .nav-dropdown-menu-title-link a::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-dropdown-menu-title-link a::before,
+  .nav-dropdown-menu-title-link a::after {
+    background-color: #f1c40f;
+    bottom: 0;
+    content: "";
+    height: 3px;
+    position: absolute;
+    transition: width 0.2s ease-out;
+    width: 0;
+  }
+  .nav-dropdown-menu-title-link a:hover {
+    color: #e8245c;
+  }
+  .nav-dropdown-menu-title-link a:hover::before,
+  .nav-dropdown-menu-title-link a:hover::after {
+    background-color: #e8245c;
+    transition-duration: 0.3s;
+    width: 80%;
+  }
+  .nav-dropdown-menu-title-link:hover,
+  .nav-dropdown-menu-submenu:hover {
+    border: 1px solid #f1c40f;
+  }
+  .nav-dropdown-menu-toggle-link {
+    background: #555;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  .nav-dropdown-menu-toggle-link a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-dropdown-menu-toggle-link label {
+    color: #fff;
+  }
+  .nav-logo {
+    padding: 10px;
+  }
+
+  .fa, .fas {
+    font-weight: 900;
+    color: grey;
+}
+  body {
+    background-color: rgb(248, 248, 248);
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+  }
+  nav {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  nav .nav-dropdown-menu-submenu {
+    border: 1px solid red;
+  }
+  nav i {
+    padding: 5px;
+  }
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-submenu,
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-main {
+    display: block;
+  }
+  nav li,
+  .nav-dropdown-menu-toggle {
+    position: relative;
+  }
+}
+
+@media (max-width: 665px) and (min-width: 501px) {
+  .darkerli {
+    background-color: #ededed;
+    text-transform: capitalize;
+  }
+  .darkerlishadow,
+  .nav-dropdown-menu-submenu ul li:first-child {
+    background-color: #ededed;
+    border-top: 1px solid #fff;
+    box-shadow: inset 0 5px 0 0 rgba(90, 90, 90, 0.09);
+  }
+  .darkerlishadowdown,
+  .nav-dropdown-menu-submenu ul li:last-child {
+    background-color: #ededed;
+  }
+  .nav-dropdown-menu-dropicon-bottom {
+    padding: 0.5em;
+  }
+  .nav-dropdown-menu-dropicon-right {
+    background-color: #ddd;
+    padding: 0.08px 10px;
+  }
+  .nav-dropdown-menu-dropicon-right,
+  .nav-dropdown-menu-dropicon-bottom {
+    position: absolute;
+    right: 0;
+    vertical-align: middle;
+  }
+  .nav-dropdown-menu-main {
+    height: 100%;
+    left: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 0;
+    position: absolute;
+    top: 4.5em;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .nav-dropdown-menu-main ul {
+    margin: 0 15px;
+  }
+  .nav-dropdown-menu-main:hover {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 400px;
+  }
+  .nav-dropdown-menu-main:hover .nav-dropdown-menu-dropicon-right {
+    display: inline-block;
+  }
+  .nav-dropdown-menu-submenu a {
+    display: block;
+    line-height: 2em;
+  }
+  .nav-dropdown-menu-submenu ul li,
+  .nav-dropdown-menu-submenu ul {
+    padding-left: 5px;
+  }
+  .nav-dropdown-menu-submenu ul,
+  .nav-dropdown-menu-submenu li,
+  nav-dropdown-menu-body {
+    margin: 0;
+  }
+  .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-dropicon-right,
+  .nav-dropdown-menu-toggle,
+  .nav-dropdown-menu-toggle-link,
+  li > label,
+  nav input[type="checkbox"] {
+    display: none;
+  }
+  nav {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    -webkit-transition: width 0.2s linear;
+    -webkit-user-select: none;
+    background: #f7f7f7;
+    bottom: 0;
+    box-shadow: 1px 0 15px rgba(0, 0, 0, 0.07);
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: width 0.2s linear;
+    user-select: none;
+    width: 55px;
+  }
+
+  nav .nav-dropdown-menu-text-after-icons {
+    background-color: #e6e6e6;
+    display: table-cell;
+    font-family: "Titillium Web", sans-serif;
+    padding-left: 5px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+  }
+  nav .nav-icon {
+    display: table-cell;
+    font-size: 18px;
+    height: 36px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 55px;
+  }
+  nav i {
+    font-size: 25px;
+    list-style: none;
+    padding: 5px 0;
+    position: relative;
+    text-align: center;
+    width: 55px;
+  }
+  nav li > a {
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #8a8a8a;
+    display: table;
+    margin-top: 3px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #fff;
+    transition: all 0.14s linear;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    -webkit-transition: all 0.14s linear;
+  }
+  nav li:focus-within > .nav-dropdown-menu-submenu {
+    display: block;
+  }
+  nav li:focus-within > input[type="checkbox"] .nav-dropdown-menu-submenu {
+    display: block;
+  }
+
+  .nav-dropdown-menu-title-link:hover > a i,
+  .nav-dropdown-menu-submenu li:hover > a {
+    background-color: #00bbbb;
+    color: #fff;
+    text-shadow: 0 0 0;
+  }
+
+  .nav-dropdown-menu-submenu li:hover > a {
+    padding-left: 10px;
+  }
+  nav:hover {
+    opacity: 1;
+    overflow: hidden;
+    width: 400px;
+  }
+}
+
+@media (min-width: 666px) {
+  .cf:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .nav-dropdown-menu,
+  nav li:hover > input[type="checkbox"] + .nav-dropdown-menu-submenu {
+    display: block;
+  }
+  .nav-dropdown-menu-body {
+    flex-basis: 70vw;
+    flex-grow: 1;
+    order: 2;
+  }
+  .nav-dropdown-menu-body a {
+    color: #626262;
+  }
+  .nav-dropdown-menu-main li:hover {
+    background-color: #f0f0f0;
+  }
+  .nav-dropdown-menu-body ul,
+  .nav-dropdown-menu-title-link,
+  .nav-dropdown-menu-toggle,
+  nav .nav-dropdown-menu-submenu {
+    border-radius: 0.5rem;
+    padding: 0;
+    margin-left: 33px;
+  }
+  .nav-dropdown-menu-dropicon-right {
+    display: inline-block;
+    font-size: 1em;
+    padding: 0.8em;
+    text-align: center;
+    text-shadow: 0 0 0 transparent;
+  }
+  .nav-dropdown-menu-dropicon-right,
+  .nav-dropdown-menu-dropicon-bottom {
+    border-radius: 0.4rem;
+    padding: 0.8em 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .nav-dropdown-menu-main {
+    margin: 0;
+  }
+  .nav-dropdown-menu-main ul {
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+  }
+  .nav-dropdown-menu-submenu {
+    margin: 0 20px;
+  }
+  .nav-dropdown-menu-submenu li {
+    border-bottom: 1px solid #ccc;
+    border-radius: 0.4rem;
+  }
+  .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-toggle-link,
+  nav input[type="checkbox"],
+  .nav-dropdown-menu-submenu .nav-dropdown-menu-dropicon-bottom {
+    display: none;
+  }
+  .nav-dropdown-menu-title-link {
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    margin: 2px 0 0 2px;
+  }
+  .nav-dropdown-menu-title-link a {
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.125);
+    transition: color 0.25s ease-out;
+  }
+  .nav-dropdown-menu-title-link a::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .nav-dropdown-menu-title-link a::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-dropdown-menu-title-link a::before,
+  .nav-dropdown-menu-title-link a::after {
+    background-color: #f1c40f;
+    bottom: 0;
+    content: "";
+    height: 3px;
+    position: absolute;
+    transition: width 0.2s ease-out;
+    width: 0;
+  }
+  .nav-dropdown-menu-title-link a:hover {
+    color: #e8245c;
+  }
+  .nav-dropdown-menu-title-link a:hover::before,
+  .nav-dropdown-menu-title-link a:hover::after {
+    background-color: #e8245c;
+    transition-duration: 0.3s;
+    width: 80%;
+  }
+  .nav-dropdown-menu-title-link:hover,
+  .nav-dropdown-menu-submenu:hover {
+    border: 1px solid #f1c40f;
+  }
+  .nav-dropdown-menu-main a {
+    padding: 0.8em 1.3em;
+  }
+  .nav-dropdown-menu-toggle:checked + .nav-dropdown-menu,
+  nav li,
+  .nav-dropdown-menu-toggle,
+  nav a,
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-submenu {
+    display: block;
+  }
+  nav {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  nav .nav-dropdown-menu-submenu {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid red;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 3000;
+  }
+  nav .nav-dropdown-menu-submenu .nav-dropdown-menu-submenu {
+    left: 100%;
+    right: auto;
+    top: 0;
+  }
+  nav .nav-dropdown-menu-submenu,
+  nav input[type="checkbox"]:checked + .nav-dropdown-menu-submenu,
+  .nav-dropdown-menu-toggle {
+    display: none;
+  }
+  nav i {
+    padding: 5px;
+  }
+  nav li {
+    float: left;
+    min-width: 158px;
+    position: relative;
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+}
+</style>
+
+</head>
+<body>
+  <!-----------------------------------------------------------------------------------------------
+    - HEADER
+  ------------------------------------------------------------------------------------------------->
+
+  <header>
+
+    
+
+    <div class="header-main">
+
+      <div class="container">
+
+        <a href="#" class="header-logo">
+          <img src="https://us.123rf.com/450wm/taawon/taawon2006/taawon200600021/149330409-online-shop-logo-design-vector-illustration-mobile-online-shopping-logo-vector-template.jpg?ver=6" alt="Anon's logo" width="100" height="55">
+        </a>
+
+        <div class="header-search-container">
+
+          <input type="search" name="search" class="search-field" placeholder="Enter your product name..." style="font-weight:550; font-size: 14px;">
+
+          <button class="search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="header-user-actions">
+
+          <button class="action-btn">
+         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png"style="width:35px;">
+          </button>
+
+
+          <button class="action-btn">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/003/171/239/small_2x/shopping-cart-with-boxes-delivery-service-free-vector.jpg" style="width:50px;">
+            <span class="count">0</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+  <!-----------------------------------------------------------------------------------------------
+    Header ends
+    ---------------------------------------------------------------------------------------------->
+<nav>
+    <!-- Start - nav - dropdown menu - body -->
+    <ul class="nav-dropdown-menu-body">
+      <!-- Start - nav - dropdown menu - toggle -->
+      <li class="nav-dropdown-menu-toggle-link">
+        <label for="tm">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+          Menu
+          <span class="nav-dropdown-menu-toggle-dropicon-bottom">▾</span>
+        </label>
+      </li>
+      <!-- End ___ nav - dropdown menu - toggle -->
+      <!-- Start - nav - dropdown menu - main -->
+      <li>
+        <input type="checkbox" id="tm" />
+        <ul class="nav-dropdown-menu-main cf">
+          <!-- Start - nav - dropdown menu - links -->
+          <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="main.html"><i class="fas fa-university"></i><span class="nav-dropdown-menu-text-after-icons">
+                Home</span></a>
+          </li>
+          <!-- End ___ nav - dropdown menu - links -->
+          <!-- Start - nav - dropdown menu - About -->
+          <li class="nav-dropdown-menu-title-link darkerlishadow">
+            <a href="#"><i class="fas fa-monument"></i><span class="nav-dropdown-menu-text-after-icons">
+                About</span>
+              <span class="nav-dropdown-menu-dropicon-bottom">▾</span>
+            </a>
+            <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm00">▾</label>
+            <!-- Start - nav - dropdown menu - About - Box -->
+            <input type="checkbox" id="sm00" />
+            <ul class="nav-dropdown-menu-submenu">
+              <!-- Start - nav - dropdown menu - About - Who We Are? -->
+              <li>
+                <a href="#">Who We Are?
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm01">▾</label>
+                <!-- Start - nav - dropdown menu - About - Who We Are? - Links -->
+                <input type="checkbox" id="sm01" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#">Mission - Values</a>
+                  </li>
+                  <li>
+                    <a href="#">History - Tradition</a>
+                  </li>
+                  <li>
+                    <a href="#">Policies - Disclosures</a>
+                  </li>
+                  <li>
+                    <a href="#">Leadership</a>
+                  </li>
+                </ul>
+                <!-- End ___ nav - dropdown menu - About - Who We Are? - Links -->
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Who We Are? -->
+              <!-- Start - nav - dropdown menu - About - Achievements -->
+              <li>
+                <a href="#">Achievements
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm02">▾</label>
+                <!-- Start - nav - dropdown menu - About - Achievements - Links -->
+                <input type="checkbox" id="sm02" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Facts</a>
+                  </li>
+                  <li>
+                    <a href="#">Honors - Grants - Awards</a>
+                  </li>
+                  <li>
+                    <a href="#">International Projects</a>
+                  </li>
+                  <li>
+                    <a href="#">Educational Effectiveness</a>
+                  </li>
+                  <li>
+                    <a href="#">Leadership</a>
+                  </li>
+                </ul>
+                <!-- End ___ nav - dropdown menu - About - Achievements - Links -->
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Achievements -->
+              <!-- Start - nav - dropdown menu - About - Reach Us -->
+              <li>
+                <a href="#">Reach Us
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm03">▾</label>
+                <!-- Start - nav - dropdown menu - About - Reach Us - Links -->
+                <input type="checkbox" id="sm03" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Maps - Directions</a>
+                  </li>
+                  <li>
+                    <a href="#">F@Q</a>
+                  </li>
+                  <li>
+                    <a href="#">Subscribe</a>
+                  </li>
+                  <li>
+                    <a href="#">Hours Of Operation</a>
+                  </li>
+                </ul>
+                <!-- End ___ nav - dropdown menu - About - Reach Us - Links -->
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Reach Us -->
+              <!-- Start - nav - dropdown menu - About - Links -->
+              <li>
+                <a href="#">Contact</a>
+              </li>
+              <!-- End ___ nav - dropdown menu - About - Links -->
+            </ul>
+            <!-- End ___ nav - dropdown menu - About - Box -->
+          </li>
+          <!-- End ___ nav - dropdown menu - About -->
+          <!-- Start - nav - dropdown menu - Student -->
+          <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-globe"></i><span class="nav-dropdown-menu-text-after-icons">
+                Categories</span>
+              <span class="nav-dropdown-menu-dropicon-bottom">▾</span>
+            </a>
+            <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm04">▾</label>
+            <!-- Start - nav - dropdown menu - Student - Box -->
+            <input type="checkbox" id="sm04" />
+            <ul class="nav-dropdown-menu-submenu">
+              <!-- Start - nav - dropdown menu - Student - Future Students -->
+              <li>
+                <a href="#">Raspberry Pi
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm05">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Future Students - Box -->
+                <input type="checkbox" id="sm05" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <li>
+                    <a href="#">Raspberry Pi Main Board
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Raspberry Pi MUC</a>
+                      </li>
+                      <li>
+                        <a href="#">Raspberry Pi 4</a>
+                      </li>
+                      <li>
+                        <a href="">Raspberry Pi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Raspberry Pi Zero</a>
+                      </li>
+                      <li>
+                        <a href="">Raspberry Pi CM</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Kits
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Kits for RPi MCU</a>
+                      </li>
+                      <li>
+                        <a href="#">Kits for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi Zero</a>
+                      </li>
+                      <li>
+                        <a href="">Kits for RPi CM</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Power
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Power for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">Power for RPi 3/Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi HAT
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">HAT for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">HAT for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">HAT for RPi Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Enclosure
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Enclosure for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">Enclosure for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Enclosure for RPi Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Raspberry Pi Display
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Display for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="#">Display for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Display for RPi Zero</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li><a href="">Raspberry Pi Camera</a></li>
+                  <li>
+                    <a href="#">Raspberry Pi Accessories
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Accessories for RPi MCU</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories for RPi 4</a>
+                      </li>
+                      <li>
+                        <a href="">Accessories for RPi 3</a>
+                      </li>
+                      <li>
+                        <a href="">Accessories for RPi Zero</a>
+                      </li>
+                      <li>
+                        <a href="">Accessories for RPi CM</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li><a href="">Books</a></li>
+                  <!-- Start - nav - dropdown menu - Student - Future Students - Degree Programs -->
+                  <!---- - dropdown menu - Student - Future Students - Non-Degree Programs -->
+                </ul>
+                <!-- End ___ nav - dropdown menu - Student - Future Students - Box -->
+              </li>
+              <!-- End ___ nav - dropdown menu - Student - Future Students -->
+              <!-- Start - nav - dropdown menu - Student - Current Students -->
+              <li>
+                <a href="#">Arduino Ecosystem
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Official Arduino Main Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Compatible Arduino Main Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Shields for Ardunio</a>
+                  </li>
+                  <li>
+                    <a href="#">Kits Based on Arduino</a>
+                  </li>
+                  <li>
+                    <a href="#">Accessories for Arduino</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  
+                  <!-- End ___ nav - dropdown menu - Student - Opportunities -->
+                </ul>
+                <!-- End ___ nav - dropdown menu - Student - Current Students - Box -->
+              </li>
+              <!-- End ___ nav - dropdown menu - Student - Current Students -->
+              <!-- Start - nav - dropdown menu - Student - Links -->
+              
+              <!-- End ___ nav - dropdown menu - Student - Links -->
+                            <li>
+                <a href="#">micro:bit
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Micro:bit Main Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:bit Kits</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:bit Robot</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:Expansion Board</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:Enclosure</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:Power and Wire</a>
+                  </li>
+                  <li>
+                    <a href="#">Micro:bit Accessories</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  
+                  <!-- End ___ nav - dropdown menu - Student - Opportunities -->
+                </ul>
+                <!-- End ___ nav - dropdown menu - Student - Current Students - Box -->
+              </li>
+
+              <!-- End ___ nav - dropdown menu - Student - Current Students -->
+              <!-- Start - nav - dropdown menu - Student - Links -->
+              
+              <!-- End ___ nav - dropdown menu - Student - Links -->
+            <li>
+                <a href="#">Motor & Motor Driver
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Motor Driver
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">DC Motor Driver</a>
+                      </li>
+                      <li>
+                        <a href="#">SmartDrive DC Motor Controller</a>
+                      </li>
+                      <li>
+                        <a href="#">Stepper Driver</a>
+                      </li>
+                      <li>
+                        <a href="#">Servo Controller</a>
+                      </li>
+                      
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                  <li>
+                    <a href="#">Motors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">DC Brushed Motor</a>
+                      </li>
+                      <li>
+                        <a href="#">Linear Motor</a>
+                      </li>
+                      <li>
+                        <a href="#">Stepper Motor</a>
+                      </li>
+                      <li>
+                        <a href="#">Toy Motor </a>
+                      </li>
+                      <li>
+                        <a href="#">Servo Motor</a>
+                      </li>
+                      <li>
+                    <a href="#">VEXTA DC Brushless Motor
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-100Watt</a>
+                      </li>
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-50Watt</a>
+                      </li>
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-30Watt</a>
+                      </li>
+                      <li>
+                        <a href="#">VEXTA Brushless Motor-15Watt</a>
+                      </li>
+                    </ul>
+                    <li>
+                        <a href="#">Miscellaneous</a>
+                      </li>
+
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Development Tools
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Maker Series</a>
+                  </li>
+                  <li>
+                    <a href="#">Education Training Kit
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Embedded System Training Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">Robotics Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">Robotics Arm</a>
+                      </li>
+                      <li>
+                        <a href="#">IOT Development Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">DIY Kit</a>
+                      </li>
+                      <li>
+                        <a href="#">DIY Kit for Junior</a>
+                      </li>
+                    </ul>
+                     <li>
+                    <a href="#">PIC Microcontroller
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Main Board</a>
+                      </li>
+                      <li>
+                        <a href="#">IC</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories</a>
+                      </li>
+                      <li>
+                        <a href="#">Training Kit</a>
+                      </li>
+                    </ul>
+                  <li>
+                    <a href="#">Computer Interface</a>
+                  </li>
+                  <li>
+                    <a href="#">ARM Development Tool</a>
+                  </li>
+                  <li>
+                    <a href="#">Beagle Bone</a>
+                  </li>
+                  <li>
+                    <a href="#">FPGA</a>
+                  </li>
+                  <li>
+                    <a href="#">Software</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Tools and Equipment
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Multimeter</a>
+                      </li>
+                      <li>
+                        <a href="#">Oscilloscope</a>
+                      </li>
+                       <li>
+                    <a href="#">Soldering/Desoldering
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Soldering Accessories</a>
+                      </li>
+                      <li>
+                        <a href="#">Desoldering</a>
+                      </li>
+                      <li>
+                        <a href="#">Soldering</a>
+                      </li>
+                      
+                    </ul>
+                      <li>
+                        <a href="#">DAQ</a>
+                      </li>
+                      <li>
+                        <a href="#">Tools</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                 
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Sensors
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Sensor Kit</a>
+                  </li>
+                  <li>
+                    <a href="#">Infrared/Light</a>
+                  </li>
+                  <li>
+                    <a href="#">Line Tracking</a>
+                  </li>
+                  <li>
+                    <a href="#">Ultrasonic</a>
+                  </li>
+                   <li>
+                    <a href="#">Gas</a>
+                  </li>
+                   <li>
+                    <a href="#">Color</a>
+                  </li>
+                   <li>
+                    <a href="#">Liquid/Flow/pH</a>
+                  </li>
+                   <li>
+                    <a href="#">Biometric Sensors</a>
+                  </li>
+                   <li>
+                    <a href="#">Flex/Force/Touch</a>
+                  </li>
+                   <li>
+                    <a href="#">Temperature/Humidity/Pressure</a>
+                  </li>
+                   <li>
+                    <a href="#">GPS/Compass</a>
+                  </li>
+                   <li>
+                    <a href="#">Rotary Encoder</a>
+                  </li>
+                   
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Proximity
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Capacitive Proximity Sensors</a>
+                      </li>
+                      <li>
+                        <a href="#">Inductive Proximity Sensors</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                 <li>
+                    <a href="#">Camera</a>
+                  </li>
+                   <li>
+                    <a href="#">Laser Range Finder</a>
+                  </li>
+                   <li>
+                    <a href="#">Motion</a>
+                  </li>
+                   <li>
+                    <a href="#">Current Sensor</a>
+                  </li>
+                   <li>
+                    <a href="#">Sound</a>
+                  </li>
+                   <li>
+                    <a href="#">Other Sensors</a>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Miscellaneous
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">Merchandise</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Books and Magazine
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Magazine</a>
+                      </li>
+                      <li>
+                        <a href="#">Books</a>
+                      </li>
+                     
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                   <li>
+                    <a href="#">Workshop & Training</a>
+                  </li>
+                   <li>
+                    <a href="#">Maker's Selection</a>
+                  </li>
+                   <li>
+                    <a href="#">Stock Clearance</a>
+                  </li>
+                   <li>
+                    <a href="#">Discontinued Items</a>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">3D Modeling
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">3D Printer</a>
+                  </li>
+                  <li>
+                    <a href="#">Laser Cutter/Engrave</a>
+                  </li>
+                  <li>
+                    <a href="#">Filament</a>
+                  </li>
+                  <li>
+                    <a href="#">3D Accessories</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">AI/DL
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Nvidia Jetson
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Nvidia Jetson Main Board</a>
+                      </li>
+                      <li>
+                        <a href="#">Nvidia Jetson Kits</a>
+                      </li>
+                      <li>
+                        <a href="#">Nvidia Jetson Camera</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories for Nvidia Jetson</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+
+                  <li>
+                    <a href="#">Google Coral</a>
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                  <li>
+                    <a href="#">Other AI Platform
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">AI Main Board</a>
+                      </li>
+                      <li>
+                        <a href="#">Accessories</a>
+                      </li>
+                     
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Wireless & IOT
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">GPS</a>
+                  </li>
+                  <li>
+                    <a href="#">LoRa</a>
+                  </li>
+                  <li>
+                    <a href="#">GSM</a>
+                  </li>
+                  <li>
+                    <a href="#">WiFi</a>
+                  </li>
+                  <li>
+                    <a href="#">RF</a>
+                  </li>
+                  <li>
+                    <a href="#">RFID</a>
+                  </li>
+                  <li>
+                    <a href="#">XBee</a>
+                  </li>
+                  <li>
+                    <a href="#">Bluetooth</a>
+                  </li>
+                  <li>
+                    <a href="#">Infrared(IR)</a>
+                  </li>
+                  <li>
+                    <a href="#">Smart Home</a>
+                  </li>
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Junior Makers
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <li>
+                    <a href="#">12 Years Old & Above</a>
+                  </li>
+                  <li>
+                    <a href="#">8 Years Old & Above</a>
+                  </li>
+                  <li>
+                    <a href="#">6 Years Old & Above</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          <li>
+                <a href="#">Robotics & Electronics
+                  <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                </a>
+                <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm21">▾</label>
+                <!-- Start - nav - dropdown menu - Student - Current Students - Box -->
+                <input type="checkbox" id="sm21" />
+                <ul class="nav-dropdown-menu-submenu">
+                  <!-- Start - nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- End ___ nav - dropdown menu - Student - Current Students - Links -->
+                  <!-- Start - nav - dropdown menu - Student - Recreation -->
+                  <li>
+                    <a href="#">Hardware
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Acryclic</a>
+                      </li>
+                      <li>
+                        <a href="#">Project Casing</a>
+                      </li>
+                      <li>
+                    <a href="#">Bolts and nuts
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Nut</a>
+                      </li>
+                      <li>
+                      <a href="#">Bolts 
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">M5 Phillip Pan Head Bolts</a>
+                      </li>
+                      <li>
+                        <a href="#">M4 Phillip Pan Head Bolts</a>
+                      </li>
+                      <li>
+                        <a href="#">M3 Phillip Pan Head Bolts</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                  </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">PCB Spacer
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">PCB Spacer(screw & nut)</a>
+                      </li>
+                      <li>
+                        <a href="#">PCB Spacer(screw & screw)</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                  </li>
+                      <li>
+                        <a href="#">Pneumatic</a>
+                      </li>
+                      <li>
+                        <a href="#">Motor Coupling</a>
+                      </li>
+                      <li>
+                        <a href="#">Motor Bracket</a>
+                      </li>
+                      <li>
+                        <a href="#">Servo Bracket</a>
+                      </li>
+                      <li>
+                        <a href="#">Sensor Bracket</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                   <li>
+                    <a href="#">Robot Accessories
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Robit Chassis</a>
+                      </li>
+                      <li>
+                        <a href="#">Robit Gripper</a>
+                      </li>
+                      <li>
+                        <a href="#">Hand-help Controller</a>
+                      </li>
+                      <li>
+                        <a href="#">Mini Wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Mid-size Wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Transwheel</a>
+                      </li>
+                      <li>
+                        <a href="#">omni Wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Mecanum wheel</a>
+                      </li>
+                      <li>
+                        <a href="#">Castors</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                   <li>
+                    <a href="#">rero
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Kits</a>
+                      </li>
+                      <li>
+                        <a href="#">Sensors</a>
+                      </li>
+                      <li>
+                        <a href="#">Spare Parts</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                   <li>
+                    <a href="#">Power
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm22">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Recreation - Box -->
+                    <input type="checkbox" id="sm22" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Recreation - Links -->
+                      <li>
+                        <a href="#">Common Batteries</a>
+                      </li>
+                      <li>
+                        <a href="#">Lead Acid rechargeable battery and charger</a>
+                      </li>
+                      <li>
+                        <a href="#">lipo rechargeable battery and charger</a>
+                      </li>
+                      <li>
+                        <a href="#">lithium ion rechargeable battery and charger</a>
+                      </li>
+                      <li>
+                        <a href="#">wireless</a>
+                      </li>
+                      <li>
+                        <a href="#">solar cell/solar panel</a>
+                      </li>
+                      <li>
+                        <a href="#">AC-DC Adapter</a>
+                      </li>
+                      <li>
+                        <a href="#">switching power supply</a>
+                      </li>
+                      <li>
+                        <a href="#">DC power supply</a>
+                      </li>
+                      <li>
+                        <a href="#">switching Module</a>
+                      </li>
+                      <li>
+                        <a href="#">shunt regulator</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Recreation - Links -->
+                    </ul>
+                    <!-- End ___ nav - dropdown menu - Student - Recreation - Box -->
+                  </li>
+                  <!-- Start - nav - dropdown menu - Student - Opportunities -->
+                  <li>
+                    <a href="#">Electronic Components
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                    <a href="#">Wire/Cable
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">USB Cable</a>
+                      </li>
+                      <li>
+                        <a href="#">Jumper wire</a>
+                      </li>
+                      <li>
+                        <a href="#">Rainbow Cable</a>
+                      </li>
+                      <li>
+                        <a href="#">Multicore wire AWG</a>
+                      </li>
+                      <li>
+                        <a href="#">Single core wire</a>
+                      </li>
+                      <li>
+                        <a href="#">Wrapping wire AWG 30</a>
+                      </li>
+                      <li>
+                        <a href="#">others</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Experiment Boards
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Breadboards</a>
+                      </li>
+                      <li>
+                        <a href="#">Copper Clad Board</a>
+                      </li>
+                      <li>
+                        <a href="#">DIY Prototype Board</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Connectors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">USB Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">D-Subminiature Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">Terminal Block</a>
+                      </li>
+                      <li>
+                        <a href="#">IDC socket</a>
+                      </li>
+                      <li>
+                        <a href="#">PCB Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">Battery Connector</a>
+                      </li>
+                      <li>
+                        <a href="#">Header Pin</a>
+                      </li>
+                      <li>
+                        <a href="#">Others</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Sound</a>
+                      </li>
+                  <li>
+                    <a href="#">IC Sockets
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">ZIF Socket</a>
+                      </li>
+                      <li>
+                        <a href="#">Turn Pin IC Socket</a>
+                      </li>
+                      <li>
+                        <a href="#">IC Socket</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Relays</a>
+                      </li>
+                      <li>
+                        <a href="#">Crystal/Resonator</a>
+                      </li>
+                  <li>
+                    <a href="#">LED/LCD
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">LCD</a>
+                      </li>
+                      <li>
+                        <a href="#">Matrix Display</a>
+                      </li>
+                      <li>
+                        <a href="#">Segment Display</a>
+                      </li>
+                      <li>
+                        <a href="#">LED</a>
+                      </li>
+                      <li>
+                        <a href="#">EInk/EPaper</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">switches
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Others</a>
+                      </li>
+                      <li>
+                        <a href="#">Keypad</a>
+                      </li>
+                      <li>
+                        <a href="#">DIP Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Limit Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Rocket Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Slide Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Toggle Switch</a>
+                      </li>
+                      <li>
+                        <a href="#">Push Button</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Capacitors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Multilayer Capacitor</a>
+                      </li>
+                      <li>
+                        <a href="#">Electrolytic Capacitor</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Diodes
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Bridge Rectifier</a>
+                      </li>
+                      <li>
+                        <a href="#">Zener Diode</a>
+                      </li>
+                      <li>
+                        <a href="#">Diodes</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Resistors
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">0.25 watt Resistor</a>
+                      </li>
+                      <li>
+                        <a href="#">5 watt Resistor</a>
+                      </li>
+                      <li>
+                        <a href="#">Resistor Bar</a>
+                      </li>
+                      <li>
+                        <a href="#">Variable Resistor</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Transistors</a>
+                      </li>
+                  <li>
+                    <a href="#">Voltage Regulator
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">Negative Voltage Regulator</a>
+                      </li>
+                      <li>
+                        <a href="#">Positive Voltage Regulator</a>
+                      </li>
+                      
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                  <li>
+                        <a href="#">Breakout Board</a>
+                      </li>
+                  <li>
+                    <a href="#">IC
+                      <span class="nav-dropdown-menu-dropicon-right">▸</span>
+                    </a>
+                    <label title="Toggle Drop-down" class="nav-dropdown-menu-dropicon-bottom" for="sm23">▾</label>
+                    <!-- Start - nav - dropdown menu - Student - Opportunities - Box -->
+                    <input type="checkbox" id="sm23" />
+                    <ul class="nav-dropdown-menu-submenu">
+                      <!-- Start - nav - dropdown menu - Student - Opportunities - Links -->
+                      <li>
+                        <a href="#">MCU</a>
+                      </li>
+                      <li>
+                        <a href="#">74 Serious</a>
+                      </li>
+                      <li>
+                        <a href="#">Others</a>
+                      </li>
+                      <li>
+                        <a href="#">IC Breakout Board</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+                      <li>
+                        <a href="#">EL Wire</a>
+                      </li>
+                      <!-- End ___ nav - dropdown menu - Student - Opportunities - Links -->
+                    </ul>
+                  </li>
+
+                  <li>
+                        <a href="#">Makeblock</a>
+                      </li>
+                </ul>
+              </li>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          
+            </ul>
+            <!-- End ___ nav - dropdown menu - Student - Box -->
+          </li>
+          <!-- End ___ nav - dropdown menu - Student -->
+          <!---------------------------------------------------------------------------------------------->
+ <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-fire"></i><span class="nav-dropdown-menu-text-after-icons">
+                Hot Deals</span></a>
+          </li>
+          <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-cart-arrow-down"></i><span class="nav-dropdown-menu-text-after-icons">
+                Discover</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-tags"></i><span class="nav-dropdown-menu-text-after-icons">
+                New Arrivals</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-bullhorn"></i><span class="nav-dropdown-menu-text-after-icons">
+                Best Sellers</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="far fa-handshake"></i><span class="nav-dropdown-menu-text-after-icons">
+                Brands</span></a>
+          </li>
+           <li class="nav-dropdown-menu-title-link darkerli">
+            <a href="#"><i class="fas fa-shopping-bag"></i><span class="nav-dropdown-menu-text-after-icons">
+                All Product</span></a>
+          </li>
+          <!---------------------------------------------------------------------------------------------->
+          <!-- Start - nav - dropdown menu - Alumni -->
+          
+    </ul>
+    <!-- End ___ nav - dropdown menu - links -->
+  </nav>
+
+<!--CONTAINER-->
+<div class="product_container">
+<div class="sidebar product_slides slide_border">
+<img src="https://static.cytron.io/image/cache/catalog/products/SN-QW-LSM6D/SN-QW-LSM6D-a-800x800.jpg" class="product_slides-item slide_images slide_option slide_image_color inline-photo2 show-on-scroll2" onclick="changeSlide(event,'Slide1')" style="width:100px;">
+<img src="https://static.cytron.io/image/cache/catalog/products/CM4-NANOB/CM4-NANOB_a-800x800.jpg" class="product_slides-item slide_images slide_option inline-photo2 show-on-scroll2" onclick="changeSlide(event,'Slide2')" style="width:100px;">
+<img src="https://static.cytron.io/image/cache/catalog/products/WR-JW-MM65/Male-to-Male-Jumper-Wire-(75-pack)-600x600-512x512.jpg" class="product_slides-item slide_images slide_option inline-photo2 show-on-scroll2" onclick="changeSlide(event,'Slide3')" style="width:100px;">
+</div>
+
+
+<div id="Slide1" class="Slider_Container SLider_border Product_tumbnail animate">
+<img src="https://static.cytron.io/image/cache/catalog/products/SN-SR04-DB/SN-SR04-DB%20(e)%201-800x800.png" width="500">
+</div>
+
+<div id="Slide2" class="Slider_Container SLider_border Product_tumbnail animate" style="display:none">
+<img src="https://static.cytron.io/image/cache/catalog/products/CM4-NANOB/CM4-NANOB_e-800x800.jpg" width="500">
+</div>
+
+<div id="Slide3" class="Slider_Container SLider_border Product_tumbnail animate" style="display:none">
+<img src="https://static.cytron.io/image/cache/catalog/products/MD10C/10amp-dc-motor-driver-a5811-800x800.jpg" width="500">
+</div>
+<div class="details">
+<h1 class="title">Red sensor</h1>
+<span class="price">$149.99</span> <strike class="strike">$160</strike>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<ul class="sub-details">
+<li><i class="fa fa-shield"></i> Secured Payment</li>
+<li><i class="fa fa-truck"></i> Delivered in 2-5 working days</li>
+</ul>
+<table>
+<tr>
+<td><label for="pincode">Check Availability</label></td>
+</tr>
+<tr>
+<td><input type="tel" name="pincode" id="pincode" placeholder="Pincode"></td><td><button class="btn1" type="submit">CHECK</button></td>
+</tr>
+<tr>
+<td><button class="btn2">ADD TO CART</button></td><td><a href="#0" id="info" class="info popup-trigger" title="info"><button class="btn3" id="myBtn">BUY NOW</button></a>
+  <div class="popup" role="alert">
+  <div class="popup-container">
+    <a href="#0" class="popup-close img-replace">Close</a>
+    <p style="font-size: 14px; font-family: 'Konnect',sans-serif;" >Do You Want To Continue Shopping ?</p>
+    <br>
+    <br>
+    <a href="all products.html"><button style="width:150px; height: 40px; background:#f79500; color: white; font-weight:bolder;">Continue Shopping</button></a>
+    <br>  <a href="create one.html"><button style="width:150px; height: 40px; background: #384aeb; color: white; font-weight:bolder;">Check out</button></a>
+  </div> 
+</div> 
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+
+<div class="reviews inline-photo show-on-scroll">
+<div class="review_sidebar review_bar_block review_gray review_card"><center>
+<button class="review-bar-item review-button tablink btn4 active_button" onclick="opentab_type(event, 'Description')">Description</button>
+<button class="review-bar-item review-button tablink btn4" onclick="opentab_type(event, 'Specification')">Specification</button>
+<button class="review-bar-item review-button tablink btn4" onclick="opentab_type(event, 'User_reviews')">Reviews</button>
+</center></div>
+
+<div>
+
+<div id="Description" class="review_container tab_type">
+<h2 style="font-size: 18px;">Description</h2>
+<br>
+ 
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+ 
+</div>
+
+<div id="Specification" class="review_container tab_type" style="display:none">
+<h2 style="font-size: 18px;">Specification</h2>
+<br>
+<table class="specification_table">
+<tr>
+<td>Dimension</td>
+<td>24cm</td>
+</tr>
+<tr>
+<td>Material</td>
+<td>Stainless Steel</td>
+</tr>
+<tr>
+<td>Warrenty</td>
+<td>1 Year</td>
+</tr>
+<tr>
+<td>Waterproof</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>No</td>
+</tr>
+</table>
+</div>
+
+<div id="User_reviews" class="review_container tab_type" style="display:none">
+<div class="user_star_ratings">
+<section class="overall_rating">
+<span class="sub-title">OVERALL RATING</span>
+<span class="title">4.0</span>
+<p>(123 Reviews)</p>
+</section>
+<section class="rating_blocks">
+<span class="sub-title">BASED ON 123 REVIEWS</span>  
+<ul>
+<li>
+5 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+23
+</li>
+<li>
+4 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+40
+</li>
+<li>
+3 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+35
+</li>
+<li>
+2 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+10
+</li>
+<li>
+1 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+15
+</li>
+</ul>  
+</section>
+<section class="reviews_recorded">
+<ul>
+<li>
+<img src="https://source.unsplash.com/50x50/?person" alt="User"> <b>Albert</b>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</li>
+<li>
+<img src="https://source.unsplash.com/50x50/?person" alt="User"> <b>Albert</b>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</li>
+</ul>
+<center><button class="btn1" style="width:150px;">Load More...</button></center>
+</section>
+</div>
+<div class="enter_user_star_ratings">
+<h1 class="title">ADD YOUR REVIEW</h1>
+<div class="rating-box">
+<div class="rating-container">
+<input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
+
+<input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+
+<input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+
+<input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+
+<input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+</div>
+</div>
+<textarea placeholder="Write a review" name="userreview" required></textarea>
+<button class="btn2">SUBMIT</button>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<!------------------------------------------------------------------------------------------
+    - FOOTER
+  --------------------------------------------------------------------------------------------->
+
+  <footer>
+
+    
+    <div class="footer-nav">
+
+      <div class="container">
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">LEARN DIGITAL MAKING</h2>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Fashion</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Electronic</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Cosmetic</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Health</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Watches</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            <h2 class="nav-title">ABOUT</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Prices drop</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">New products</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Best sales</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Contact us</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Sitemap</a>
+          </li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            <h2 class="nav-title">INFORMATION</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Delivery</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Legal Notice</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Terms and conditions</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">About us</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Secure payment</a>
+          </li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Services</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Prices drop</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">New products</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Best sales</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Contact us</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Sitemap</a>
+          </li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Contact</h2>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <address class="content">
+              419 State 414 Rte
+              Beaver Dams, New York(NY), 14812, USA
+            </address>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+
+            <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Follow Us</h2>
+          </li>
+
+          <li>
+            <ul class="social-link">
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div class="container">
+
+        <img src="https://raw.githubusercontent.com/codewithsadee/anon-ecommerce-website/master/assets/images/payment.png" alt="payment method" class="payment-img">
+
+       
+      </div>
+
+    </div>
+
+  </footer>
+
+ <!------------------------------------------------------------------------------------------
+ Footer ends
+ ------------------------------------------------------------------------------------------>
+
+
+
+
+<script type="text/javascript">
+	function changeSlide(evt, Product_tumbnailName) {
+var i, x, slide_options;
+x = document.getElementsByClassName("Product_tumbnail");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+slide_options = document.getElementsByClassName("slide_option");
+for (i = 0; i < x.length; i++) {
+slide_options[i].className = slide_options[i].className.replace(" slide_image_color", "");
+}
+document.getElementById(Product_tumbnailName).style.display = "block";
+evt.currentTarget.className += " slide_image_color";
+}
+
+
+function opentab_type(evt, tab_typeName) {
+var i, x, tablinks;
+x = document.getElementsByClassName("tab_type");
+for (i = 0; i < x.length; i++) {
+x[i].style.display = "none";
+}
+tablinks = document.getElementsByClassName("tablink");
+for (i = 0; i < x.length; i++) {
+tablinks[i].className = tablinks[i].className.replace("active_button", ""); 
+}
+document.getElementById(tab_typeName).style.display = "block";
+evt.currentTarget.className += " active_button";
+}
+
+
+
+
+
+//SCROLL ANIMATE
+var scroll = window.requestAnimationFrame ||
+function(callback){ window.setTimeout(callback, 1000/60)};
+var elementsToShow = document.querySelectorAll('.show-on-scroll'); 
+function loop() {
+
+Array.prototype.forEach.call(elementsToShow, function(element){
+if (isElementInViewport(element)) {
+element.classList.add('is-visible');
+} else {
+element.classList.remove('is-visible');
+}
+});
+
+scroll(loop);
+}
+loop();
+
+function isElementInViewport(el) {
+// special bonus for those using jQuery
+if (typeof jQuery === "function" && el instanceof jQuery) {
+el = el[0];
+}
+var rect = el.getBoundingClientRect();
+return (
+(rect.top <= 0
+&& rect.bottom >= 0)
+||
+(rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+||
+(rect.top >= 0 &&
+rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+);
+}
+
+
+
+
+//SCROLL ANIMATE
+var scroll2 = window.requestAnimationFrame ||
+function(callback2){ window.setTimeout(callback2, 1000/60)};
+var elementsToShow2 = document.querySelectorAll('.show-on-scroll2'); 
+function loop2() {
+
+Array.prototype.forEach.call(elementsToShow2, function(element){
+if (isElementInViewport(element)) {
+element.classList.add('is-visible2');
+} else {
+element.classList.remove('is-visible2');
+}
+});
+
+scroll2(loop2);
+}
+loop2();
+
+function isElementInViewport(el) {
+// special bonus for those using jQuery
+if (typeof jQuery === "function" && el instanceof jQuery) {
+el = el[0];
+}
+var rect2 = el.getBoundingClientRect();
+return (
+(rect2.top <= 0
+&& rect2.bottom >= 0)
+||
+(rect2.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+rect2.top <= (window.innerHeight || document.documentElement.clientHeight))
+||
+(rect2.top >= 0 &&
+rect2.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+);
+}
+</script>
+ <!--
+    - ionicon link
+  -->
+  <script>
+        const productContainers = [...document.querySelectorAll('.product-container')];
+const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+productContainers.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nxtBtn[i].addEventListener('click', () => {
+        item.scrollLeft += containerWidth;
+    })
+
+    preBtn[i].addEventListener('click', () => {
+        item.scrollLeft -= containerWidth;
+    })
+})
+    </script>
+<script >
+  jQuery(document).ready(function($){
+  //open popup
+  $('.popup-trigger').on('click', function(event){
+    event.preventDefault();
+    $('.popup').addClass('is-visible');
+  });
+  
+  //close popup
+  $('.popup').on('click', function(event){
+    if( $(event.target).is('.popup-close') || $(event.target).is('.popup') ) {
+      event.preventDefault();
+      $(this).removeClass('is-visible');
+    }
+  });
+  //close popup when clicking the esc keyboard button
+  $(document).keyup(function(event){
+      if(event.which=='27'){
+        $('.popup').removeClass('is-visible');
+      }
+    });
+});
+</script>
+
+
+</body>
+</html>
